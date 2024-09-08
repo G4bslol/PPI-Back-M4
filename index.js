@@ -1,18 +1,18 @@
 import Event from "./Model/event.js";
 
-const event = new Event("Party Night", "Festa fantasia organizada pela equipe de gestão da atual prefeitura", "R. Floriano Peixoto", "31 de Outubro de 2023", 11.99)
+const event = new Event("Party Night", "Almoço em familia é sempre melhor", "", "", 0)
 
 
-event.incluir().then(() => {
-    console.log("Evento alterado com sucesso!")
-}).catch((error) => {
-    console.log(`Erro ao alterar: ${error}`)
-})
-
-// event.consultar().then((listaEventos) => {
-//     for (const evento of listaEventos) {
-//         console.log(evento.toSring());
-//     }
+// event.excluir().then(() => {
+//     console.log("Evento excluido com sucesso!")
 // }).catch((error) => {
-//     console.log(`Erro ao consultar: ${error}`)
+//     console.log(`Erro ao excluir: ${error}`)
 // })
+
+event.consultar("Full House").then((listaEventos) => {
+    for (const evento of listaEventos) {
+        console.log(evento.toSring());
+    }
+}).catch((error) => {
+    console.log(`Erro ao consultar: ${error}`)
+})
