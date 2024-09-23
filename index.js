@@ -1,6 +1,18 @@
-import Event from "./Model/event.js";
+import express from "express";
 
-const event = new Event("Party Night", "Almoço em familia é sempre melhor", "", "", 0)
+import rotaEvent from "./routes/routeEvent.js";
+
+const app = express();
+const host = "0.0.0.0"
+const port = 4000;
+
+app.use(express.json())
+
+app.use('/events', rotaEvent)
+
+app.listen(port, host, ()=>{
+    console.log(`Servidor rodando em: http://${host}:${port}`)
+})
 
 
 // event.excluir().then(() => {
@@ -9,10 +21,10 @@ const event = new Event("Party Night", "Almoço em familia é sempre melhor", ""
 //     console.log(`Erro ao excluir: ${error}`)
 // })
 
-event.consultar("Full House").then((listaEventos) => {
-    for (const evento of listaEventos) {
-        console.log(evento.toSring());
-    }
-}).catch((error) => {
-    console.log(`Erro ao consultar: ${error}`)
-})
+// event.consultar("Full House").then((listaEventos) => {
+//     for (const evento of listaEventos) {
+//         console.log(evento.toSring());
+//     }
+// }).catch((error) => {
+//     console.log(`Erro ao consultar: ${error}`)
+// })

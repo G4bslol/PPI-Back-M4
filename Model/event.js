@@ -16,66 +16,80 @@ export default class Event {
         this.#ticketValue = ticketValue
     }
 
-    get title(){
+    get title() {
         return this.#title
     }
 
-    set title(novoTitle){
+    set title(novoTitle) {
         this.#title = novoTitle
     }
-    
-    get description(){
+
+    get description() {
         return this.#description
     }
 
-    set description(newDescription){
+    set description(newDescription) {
         this.#description = newDescription
     }
-    
-    get local(){
-        return this.#local 
+
+    get local() {
+        return this.#local
     }
 
-    set local(newLocal){
+    set local(newLocal) {
         this.#local = newLocal
     }
-    
-    get date(){
-        return this.#date 
+
+    get date() {
+        return this.#date
     }
 
-    set date(newDate){
+    set date(newDate) {
         this.#date = newDate
     }
-    
-    get ticketValue(){
-        return this.#ticketValue 
+
+    get ticketValue() {
+        return this.#ticketValue
     }
 
-    set ticketValue(newTicketValue){
+    set ticketValue(newTicketValue) {
         this.#ticketValue = newTicketValue
     }
 
-    toSring(){
-        return `Titulo: ${this.#title}\nDescrição: ${this.#description}\nLocal: ${this.#local}\nData: ${this.#date}\nValor do Ingresso: ${this.#ticketValue}\n`
+    toSring() {
+        return `Titulo: ${this.#title}\n
+        Descrição: ${this.#description}\n
+        Local: ${this.#local}\n
+        Data: ${this.#date}\n
+        Valor do Ingresso: ${this.#ticketValue}\n`
     }
 
-    async incluir(){
+    toJSON() {
+        return {
+            title: this.#title,
+            description: this.#description,
+            local: this.#local,
+            date: this.#date,
+            ticketValue: this.#ticketValue
+        }
+    }
+
+    async incluir() {
         const evtDAO = new EventDAO();
         await evtDAO.gravar(this);
     }
 
-    async alterar(){
+    async alterar() {
         const evtDAO = new EventDAO();
         await evtDAO.alterar(this);
     }
 
-    async excluir(){
+    async excluir() {
         const evtDAO = new EventDAO();
         await evtDAO.excluir(this);
     }
 
-    async consultar(param){
+    async consultar(param) {
         const evtDAO = new EventDAO();
         return await evtDAO.consultar(param);
     }
