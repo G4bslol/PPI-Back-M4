@@ -53,7 +53,7 @@ export default class EventControl {
             const ticketValue = data.ticketValue
 
             if (title && description && local && date && ticketValue) {
-                const event = new Event()
+                const event = new Event(title, description, local, date, ticketValue)
                 event.alterar().then(() => {
                     res.status(200).json({
                         "status": true,
@@ -86,16 +86,16 @@ export default class EventControl {
             const title = dados.title;
 
             if (title) {
-                const event = new Event();
+                const event = new Event(title);
                 event.excluir().then(() => {
                     res.status(200).json({
                         "status": true,
-                        "message": "Cliente excluído com sucesso!"
+                        "message": "Evento excluído com sucesso!"
                     })
                 }).catch((error) => {
                     res.status(500).json({
                         "status": false,
-                        "message": "Erro ao excluir o cliente: " + error.message
+                        "message": "Erro ao excluir o evento: " + error.message
                     })
                 })
             }
