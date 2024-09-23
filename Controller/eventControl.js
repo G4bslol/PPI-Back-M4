@@ -57,12 +57,12 @@ export default class EventControl {
                 event.alterar().then(() => {
                     res.status(200).json({
                         "status": true,
-                        "message": "Cliente alterado com sucesso!"
+                        "message": "Evento alterado com sucesso!"
                     })
                 }).catch((error) => {
                     res.status(500).json({
                         "status": false,
-                        "message": "Erro ao alterar o cliente: " + error.message
+                        "message": "Erro ao alterar o evento: " + error.message
                     })
                 })
             }
