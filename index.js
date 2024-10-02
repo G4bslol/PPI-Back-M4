@@ -2,9 +2,15 @@ import express from "express";
 
 import rotaEvent from "./routes/routeEvent.js";
 
+import cors from 'cors';
+
 const app = express();
 const host = "0.0.0.0"
 const port = 4000;
+
+app.use(cors({
+    origin: "http://localhost:3333",
+}))
 
 app.use(express.json())
 
